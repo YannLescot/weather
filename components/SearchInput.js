@@ -3,12 +3,9 @@ import { StyleSheet, View, TextInput } from 'react-native';
 
 export default class SearchInput extends React.Component {
 
-  constructor(props){
-    super(props)
-      this.state= {
+  state= {
         text: '',
       }
-  }
 
   handleChangeText = (text) => {
     this.setState({text});

@@ -6,16 +6,13 @@ import { fetchLocationId, fetchWeather } from './utils/api'
 
 export default class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state= {
+ state= {
       loading: false,
       error: false,
       location: '',
       temperature: 0,
       weather: '',
     }
-  }
 
   componentDidMount(){
     this.handleUpdateLocation('San Francisco')
@@ -23,7 +20,7 @@ export default class App extends React.Component {
 
   handleUpdateLocation = async (city) => {
     if (!city) return;
-    this.setState({loading: true}), async () => {
+    this.setState({loading: true}, async () => {
       try{
         const locationId = await fetchLocationId(city);
         const {location, weather, temperature} = await fetchWeather(
@@ -34,7 +31,7 @@ export default class App extends React.Component {
           error: false,
           location,
           weather,
-          temperature
+          temperature,
         })
       } catch(e){
         this.setState({
@@ -42,7 +39,7 @@ export default class App extends React.Component {
           error: true,
         })
       }
-    }
+    })
   }
 
 render(){
